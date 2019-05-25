@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  if errors
+    each error, i in errors
+      div.alert.alert-danger #{error.msg}
+  #outerContainer(onload='load.js')
+    #container
+      #popup 
+        form(method='post', action='/postits/save')
+          textarea#tt(name='text', placeholder='Write something')
+          input.btn.btn-primary(onclick='ajout()',value='save', type='submit', name='submit')
+          input.btn.btn-primary(onclick='ajout()',value='cancel' type='submit', name="cancel")
+          input#x(type='hidden', name ='x')
+          input#y(type='hidden', name ='y')
+          input(type='hidden', value= '#{currentUser.username}', name = 'user')
+      if output
+        -var n= 0
+        each item in output
+          .mouveble(id = n++ ,style='position: absolute; top: #{item.y}px; left: #{item.x}px;', onmousedown='dragStart(event)', onmouseup='dragEnd(event)', onmousemove='drag(event)')
+            #postit
+              form(method='post', action='/postits/update')
+                input#id(type='hidden',value = '#{item._id}', name ='id')
+                input#use(type='hidden',value = '#{item.user}', name ='user')
+                input#cuse(type='hidden',value = '#{currentUser.username}', name ='cuser')
+                button.btn.btn-primary(value='supprimer', type='submit', name='submit')
+                  i.far.fa-trash-alt
+                button.btn.btn-primary(value='enregistrer', type='submit', name='submit')
+                  i.far.fa-save
+                textarea#text(name='text') #{item.text}
+              div
+                #date #{item.date}
+                #auteur #{item.user}
+
