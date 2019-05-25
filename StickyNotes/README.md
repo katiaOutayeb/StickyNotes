@@ -1,13 +1,12 @@
-#Application de Postit sociale#
+# Application de Postit sociale #
 
 # Application web avec Node js, Express Js, MongoDB, Jade et JavaScript
 
-Voir le le site https://asciidoctor.org/
 ## Description ##
 
-### Partie Obligatoire ###
-
 L’application proposera les fonctionnalités suivantes : 
+
+### Partie Obligatoire ###
 
 * créer un compte utlisateur
 * se connecter un l'espace membre
