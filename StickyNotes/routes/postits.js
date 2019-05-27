@@ -13,7 +13,7 @@ router.post('/save',function(req, res, next) {
   var sab = req.body.submit
 
   console.log(text);
-  if (sab == "submit") {
+  if (sab == "save") {
   // Form Validator
   req.checkBody('text','text field is required').notEmpty();
   req.checkBody('text','text field is not Alphanumeric').matches(/^[a-z0-9 ]+$/i);
